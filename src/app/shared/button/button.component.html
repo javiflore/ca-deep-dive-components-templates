@@ -6,6 +6,19 @@
     -->
     <ng-content />
 </span>
+
 <!-- the select atribute, identify the element with that selector specified .icon -->
  <!-- just selects the part wrapped with the icon class .icon on them -->
-<ng-content select=".icon" />
+<!-- <ng-content select=".icon" /> -->
+
+
+
+
+<!-- we can use this another anotation for using the span tag inside the button
+    component and not in the parent component. In that case, we use the
+    select = "icon" without the dot, and in the parent component, we use the
+    property ngProjectionAs = "icon"
+-->
+<span class="icon">
+    <ng-content select="icon">→</ng-content>
+</span>
