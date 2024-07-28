@@ -1,3 +1,11 @@
 
-<span>Submit</span>
-<span class="icon">→</span>
+<span>
+    <!-- 
+    without any configuration, will output any content  that's not matched by
+    other ng-content element
+    -->
+    <ng-content />
+</span>
+<!-- the select atribute, identify the element with that selector specified .icon -->
+ <!-- just selects the part wrapped with the icon class .icon on them -->
+<ng-content select=".icon" />
