@@ -9,6 +9,14 @@ import { Component } from '@angular/core';
 })
 export class ServerStatusComponent {
 
-  currentStatus = 'online';
+  // literal types - only allow specific string values
+  currentStatus: 'online'|'offline'|'unknown' = 'unknown';
 
+  constructor() {
+    this.currentStatus = Math.random() > 0.5 ? 'online' : 'offline';
+
+    setInterval(() => {
+      this.currentStatus = Math.random() > 0.5 ? 'online' : 'offline';
+    }, 1000);
+  }
 }
