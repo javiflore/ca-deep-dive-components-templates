@@ -1,11 +1,12 @@
 
 <!-- ngSubmit, we need to import FormsModule -->
-<form (ngSubmit)="onSubmit()">
+<form (ngSubmit)="onSubmit(titleInput, textInput.value)">
     <app-control label="Title">
-        <input type="text" name="title" id="title" />
+        <!-- the # creates a template variable -->
+        <input type="text" name="title" id="title" #titleInput />
     </app-control>
     <app-control label="Request">
-        <textarea type="text" name="request" id="request" rows="3"></textarea>
+        <textarea type="text" name="request" id="request" rows="3" #textInput ></textarea>
     </app-control>
     <p>
         <button appButton >

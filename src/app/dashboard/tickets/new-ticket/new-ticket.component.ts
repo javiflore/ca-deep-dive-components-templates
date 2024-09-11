@@ -16,8 +16,9 @@ export class NewTicketComponent {
 
   constructor() { }
 
-  onSubmit() {
-    console.log('submit');
+  onSubmit(input: any, text: string) {
+    console.log('submit: ', input.value);
+    console.log('text: ', text);
   }
 
 }
