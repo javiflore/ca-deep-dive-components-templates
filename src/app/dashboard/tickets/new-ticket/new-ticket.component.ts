@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, ViewChild, ViewChildren, viewChild } from '@angular/core';
 
 import { ButtonComponent } from '../../../shared/button/button.component';
 import { ControlComponent } from "../../../shared/control/control.component";
@@ -13,7 +13,15 @@ import { FormsModule } from '@angular/forms';
 })
 export class NewTicketComponent {
 
-  @ViewChild('form') form?: ElementRef<HTMLFormElement>;
+  // @ViewChild('form') form?: ElementRef<HTMLFormElement>;
+
+  // you can also use ViewChild as a function
+  private form = viewChild.required<ElementRef<HTMLFormElement>>('form');
+
+
+
+  // to store many elements
+  // @ViewChildren(ButtonComponent) buttons?: ButtonComponent[];
 
   constructor() { }
 
@@ -21,7 +29,7 @@ export class NewTicketComponent {
     console.log('submit: ', input.value);
     console.log('text: ', text);
 
-    this.form?.nativeElement.reset();
+    this.form()?.nativeElement.reset();
 
   }
 
