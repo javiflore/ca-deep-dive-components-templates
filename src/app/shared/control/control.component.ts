@@ -16,9 +16,9 @@ export class ControlComponent {
 
   @HostBinding('class') className = 'control';
 
-  @HostListener('click') onClick2(event: Event) {
-    console.log('Clicked', this.el);
-  }
+  // @HostListener('click') onClick2(event: Event) {
+  //   console.log('Clicked', this.el);
+  // }
 
   label = input.required<string>();
 

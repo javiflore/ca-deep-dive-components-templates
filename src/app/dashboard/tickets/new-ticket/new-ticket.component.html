@@ -1,4 +1,6 @@
-<form>
+
+<!-- ngSubmit, we need to import FormsModule -->
+<form (ngSubmit)="onSubmit()">
     <app-control label="Title">
         <input type="text" name="title" id="title" />
     </app-control>
