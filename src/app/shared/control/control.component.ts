@@ -1,4 +1,4 @@
-import { Component, ElementRef, HostBinding, HostListener, ViewEncapsulation, inject, input} from '@angular/core';
+import { Component, ContentChild, ElementRef, HostBinding, HostListener, ViewEncapsulation, contentChild, inject, input} from '@angular/core';
 
 @Component({
   selector: 'app-control',
@@ -7,10 +7,10 @@ import { Component, ElementRef, HostBinding, HostListener, ViewEncapsulation, in
   templateUrl: './control.component.html',
   styleUrl: './control.component.css',
   encapsulation: ViewEncapsulation.None, // <--- This line disables the style encapsulation, control.component.css will become global.
-  // host: {
-  //   class: 'control',
-  //   '(click)': 'onClick($event)'
-  // }
+  host: {
+    class: 'control',
+    '(click)': 'onClick($event)'
+  }
 })
 export class ControlComponent {
 
@@ -25,8 +25,18 @@ export class ControlComponent {
   // ElementRef gives you access to the element host
   private el = inject(ElementRef);
 
+
+  // ContentChild allows us to access the PROYECTED CONTENT(ng-content) in the component
+  // for that reason, the selector name, must be declared in the template that uses the ng-content,
+  // in this case, the selector is 'input' in new-ticket.component.html
+  // @ContentChild('input') private control?: ElementRef<HTMLInputElement | HTMLTextAreaElement>;
+
+  // control SIGNAL
+  private control = contentChild.required<ElementRef<HTMLInputElement | HTMLTextAreaElement>>('input');
+
+
   onClick(event: Event) {
-    console.log('ControlComponent.onClick', event);
+    console.log('ControlComponent.onClick', this.control);
   }
 
 
