@@ -1,6 +1,6 @@
 
 <!-- ngSubmit, we need to import FormsModule -->
-<form (ngSubmit)="onSubmit(titleInput, textInput.value)">
+<form (ngSubmit)="onSubmit(titleInput, textInput.value)" #form>
     <app-control label="Title">
         <!-- the # creates a template variable -->
         <input type="text" name="title" id="title" #titleInput />
