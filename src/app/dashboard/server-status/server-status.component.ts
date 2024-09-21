@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, signal } from '@angular/core';
+import { Component, OnDestroy, OnInit, effect, signal } from '@angular/core';
 
 @Component({
   selector: 'app-server-status',
@@ -14,7 +14,17 @@ export class ServerStatusComponent implements OnInit, OnDestroy {
 
   private interval?: ReturnType<typeof setInterval>;
 
-  constructor() {}
+  constructor() {
+
+    // effect is a function that runs every time the signal changes, it is a SUBSCRIPTION
+    // ALLOW YOU TO RUN CODE EVERY TIME THE SIGNAL CHANGES
+    effect(()=>{
+      console.log('Current status with subscription: ', this.currentStatus());
+    });
+
+    console.log( 'no subscription', this.currentStatus());
+
+  }
 
 
   // ngOnInit runs once the component has initialized all the inputs()
